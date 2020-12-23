@@ -1,12 +1,15 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './BurgerIngredient.css';
+import PropTypes from 'pop-types';
 
 
-const burgerIngredient = (props) => {
-    let ingredient = null;
+class burgerIngredient extend Component {
+    CanvasRenderingContext2D() {
+
+        let ingredient = null;
 // expect to receive the type
 // ingredient is either null, or one of the many "DIVs"
-    switch (props.type) {
+        switch (this.props.type) {
         case ('bread-bottom'):
             ingredient = <div className="BreadBottom"></div>
             break;
@@ -32,10 +35,14 @@ const burgerIngredient = (props) => {
             break;
         default:
             ingredient=null;
- 
 
-    }
+        }
 
-};
+    };
+burgerIngredient.popTypes = {
+    // make sure the type is sting
+    // if you try to use the ingredient component without passing a type, you'll get an error
+    type: PropTypes.string.isRequired
+}
 
 export default burgerIngredient;
