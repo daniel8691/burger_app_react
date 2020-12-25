@@ -1,0 +1,36 @@
+.Burger {
+    width:100%;
+    margin:auto;
+    height:250px;
+    /* so we can scroll if the build a burger bigger than 250px */
+    overflow:scroll;
+    /* center everything */
+    text-align: center;
+    font-weight: bold;
+    /* rem is based on the default font size the user selected */
+    font-size:1.2rem;
+};
+
+
+/* create media query for different viewport sizes*/
+@media (min-width: 500px) and (min-height: 400px) {
+    .Burger {
+        width: 350px;
+        height: 300px;
+
+    }
+};
+@media (min-width: 500px) and (min-height: 401px) {
+    .Burger {
+        width: 450px;
+        height: 400px;
+
+    }
+};
+@media (min-width: 1000px) and (min-height: 700px) {
+    .Burger {
+        width: 700px;
+        height: 600px;
+
+    }
+};
