@@ -3,7 +3,7 @@
 import React, {Component} from 'react';
 import Aux from '../HOC/Aux1';
 import Burger from '../Components/Burger/Burger';
-
+import BuildControls from '../Components/Burger/BuildControls/BuildControls';
 
 class BestBurger extends Component {
 
@@ -26,8 +26,8 @@ class BestBurger extends Component {
             <Aux>
                 {/* pass the list of ingredients into the Burger tag */}
                 <Burger ingredients={this.state.ingredients} />
-                <div>Burger</div>
-                <div>Build Controls</div>
+                {/* <div>Burger</div> */}
+                <BuildControls />
 
             </Aux>
 
