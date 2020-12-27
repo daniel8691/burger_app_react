@@ -4,7 +4,7 @@ import BurgerIngredient from './BurgerIngredient/BurgerIngredient.js';
 
 const burger = (props) => {
     // extract keys of object and gives you an array of the keys
-    const transformedIngredients = Object.keys(props.ingredients)
+    let transformedIngredients = Object.keys(props.ingredients)
         // create a function called ingredient keys
         .map(igKey => {        
         // get an array of the number of ingredients we have
@@ -21,14 +21,16 @@ const burger = (props) => {
         // this simply take the given element for which we are looping and add it to this array
         return arr.concat(el)
     }, []);
-    // return a statement if the ingredients section is empty
-    if (transformedIngredients.length == 0) {
-        // transformedIngredients = "<p>check check one two</p>"
-    }
+
 
     console.log(props.ingredients);
     console.log(transformedIngredients);
     console.log(transformedIngredients.length);
+
+    // return a statement if the ingredients section is empty (works if variable was defined with "let")
+    if (transformedIngredients.length === 0) {
+        transformedIngredients = <p>Please add ingredients</p>
+    }
     return (
         <div className="Burger">
             
