@@ -56,7 +56,7 @@ class BestBurger extends Component {
     // create a handler that allow users to add ingredients on click on the "Less" button
     removeIngredientHandler = (type) => {
         const oldCount = this.state.ingredients[type];
-        // prevents an error if you decrease the number of ingredients below 0
+        // prevents an error (let it return nothing) if you decrease the number of ingredients below 0
         if (oldCount <= 0) {
             return ;
         }
@@ -80,11 +80,11 @@ class BestBurger extends Component {
 
 
     render() {
-        // WEBPAGE GIVES AN ERROR IF YOU REMOVE AN INGREDIENT WHEN INGREDIENT COUNT IS 0: debug below
+        // WBEPAGE DISABLES THE "LESS" BUTTON WHEN THE CONT IS AT 0
         const disabledInfo = {
             ...this.state.ingredients
         };
-        console.log(disabledInfo)
+        // console.log(disabledInfo)
 
         // returns TRUE/FALSE
         for (let key in disabledInfo) {
