@@ -50,17 +50,46 @@ class BestBurger extends Component {
         });
         
         // console.log(oldCount);
+        console.log(type)
     }
 
     // create a handler that allow users to add ingredients on click on the "Less" button
     removeIngredientHandler = (type) => {
-        
+        const oldCount = this.state.ingredients[type];
+        // minus instead of add compared to the addIngredientHandler
+        const updatedCount = oldCount-1;
+        const updatedIngredients = {
+            ...this.state.ingredients
+        };
+        updatedIngredients[type] = updatedCount;
+        const priceDeduction = INGREDIENT_PRICES[type];
+        const oldPrice = this.state.totalPrice;
+        const newPrice = oldPrice  - priceDeduction;
+        this.setState({
+            totalPrice: newPrice,
+            ingredients: updatedIngredients
+        })
+
     }
 
 
 
 
     render() {
+        // WEBPAGE GIVES AN ERROR IF YOU REMOVE AN INGREDIENT WHEN INGREDIENT COUNT IS 0: debug below
+        const disabledInfo = {
+            ...this.state.ingredients
+        };
+        console.log(disabledInfo)
+
+        // returns TRUE/FALSE
+        for (let key in disabledInfo) {
+            // check if the ingredients values is 0
+            // the key in the case is the VALUE of the INGREDIENTS object
+            disabledInfo[key] = disabledInfo[key] <= 0
+        }
+
+
         return(
             <Aux>
                 {/* pass the list of ingredients into the Burger tag */}
@@ -68,7 +97,10 @@ class BestBurger extends Component {
                 {/* <div>Burger</div> */}
                 <BuildControls 
                 // we will then add this property name (ingredientAdded) into the BuildControls.js
-                    ingredientAdded = {this.addIngredientHandler} />
+                    ingredientAdded = {this.addIngredientHandler}
+                    ingredientRemoved = {this.removeIngredientHandler}
+                    // disabled property
+                    disabled = {disabledInfo} />
 
             </Aux>
 

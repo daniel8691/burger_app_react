@@ -8,9 +8,10 @@ const buildControl = (props) => (
         {/* props.(whatever name you want) */}
         <div className="Label">{props.label}</div>
         {/* create a button to remove an ingredient */}
-        <button className="Less">Less</button>
+        <button className="Less" onClick={props.removed}>Less</button>
         {/* create one to ADD ingredient */}
         <button className = "More" onClick={props.added}>More</button>
+        )
     </div>
 );
 
