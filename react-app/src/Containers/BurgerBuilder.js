@@ -56,6 +56,10 @@ class BestBurger extends Component {
     // create a handler that allow users to add ingredients on click on the "Less" button
     removeIngredientHandler = (type) => {
         const oldCount = this.state.ingredients[type];
+        // prevents an error if you decrease the number of ingredients below 0
+        if (oldCount <= 0) {
+            return ;
+        }
         // minus instead of add compared to the addIngredientHandler
         const updatedCount = oldCount-1;
         const updatedIngredients = {
