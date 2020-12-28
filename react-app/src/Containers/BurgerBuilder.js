@@ -26,11 +26,12 @@ class BestBurger extends Component {
             bacon:0,
             cheese: 0,
             meat: 0
-        }
+        },
         // add a totla price property to the ingredient
         totalPrice: 4
     }
 
+    // create a handler that allow users to add ingredients on click (on the "More" button)
     addIngredientHandler = (type) => {
         // find the old ingredient count is before adding new ingredients
         const oldCount = this.state.ingredients[type];
@@ -39,9 +40,25 @@ class BestBurger extends Component {
             ...this.state.ingredients
         };
         updatedIngredients[type] = updatedCount;
+        const priceAddition = INGREDIENT_PRICES[type];
+        const oldPrice = this.state.totalPrice;
+        const newPrice = oldPrice + priceAddition;
+        // update the ingredients and update the price
+        this.setState({
+            totalPrice:newPrice,
+            ingredients: updatedIngredients
+        });
         
         // console.log(oldCount);
     }
+
+    // create a handler that allow users to add ingredients on click on the "Less" button
+    removeIngredientHandler = (type) => {
+        
+    }
+
+
+
 
     render() {
         return(
@@ -49,7 +66,9 @@ class BestBurger extends Component {
                 {/* pass the list of ingredients into the Burger tag */}
                 <Burger ingredients={this.state.ingredients} />
                 {/* <div>Burger</div> */}
-                <BuildControls />
+                <BuildControls 
+                // we will then add this property name (ingredientAdded) into the BuildControls.js
+                    ingredientAdded = {this.addIngredientHandler} />
 
             </Aux>
 
