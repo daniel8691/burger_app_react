@@ -48,7 +48,9 @@ class BestBurger extends Component {
     purchaseCancelHandler =()=>{
         this.setState({purchasing:false})
     }
-
+    purchaseContinueHandler=() => {
+        alert("you continued!")
+    }
 
     // add new method to the burger builder
     updatePurchaseState (ingredients) {
@@ -144,7 +146,10 @@ class BestBurger extends Component {
                 {/* this is to wrap the order summary */}
                 <Modal show={this.state.purchasing}
                         modalClosed={this.purchaseCancelHandler}>
-                    <OrderSummary ingredients = {this.state.ingredients} />
+                    <OrderSummary ingredients = {this.state.ingredients}
+                    purchaseCancelled={this.purchaseCancelHandler}
+                    purchaseContinued={this.purchaseContinueHandler}
+                         />
                 </Modal>
                 {/* pass the list of ingredients into the Burger tag */}
                 <Burger ingredients={this.state.ingredients} />
