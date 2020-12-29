@@ -35,9 +35,21 @@ class BestBurger extends Component {
         // add a totla price property to the ingredient
         totalPrice: 4,
         // I will make this true if the ingrdient is one or more
-        purchasable:false ,
+        purchasable:false,
+        // show & hiding the modal with animation (purchaseHandler method)
         purchasing: false
     }
+
+    // create a method
+    purchaseHandler = () => {
+        this.setState({purchasing:true})
+    };
+    // cancel purchase (click because user doesn't want to continue)
+    purchaseCancelHandler =()=>{
+        this.setState({purchasing:false})
+    }
+
+
     // add new method to the burger builder
     updatePurchaseState (ingredients) {
         // create a copy of this state ingredients
@@ -130,7 +142,8 @@ class BestBurger extends Component {
         return(
             <Aux>
                 {/* this is to wrap the order summary */}
-                <Modal>
+                <Modal show={this.state.purchasing}
+                        modalClosed={this.purchaseCancelHandler}>
                     <OrderSummary ingredients = {this.state.ingredients} />
                 </Modal>
                 {/* pass the list of ingredients into the Burger tag */}
@@ -143,6 +156,8 @@ class BestBurger extends Component {
                     // disabled property
                     disabled = {disabledInfo}
                     purchasable = {this.state.purchasable}
+                    // gets excecuted when you click on the ORDER NOW button
+                    ordered = {this.purchaseHandler}
                     // pass in the price from the state
                     price={this.state.totalPrice} />
                 

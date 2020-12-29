@@ -1,0 +1,13 @@
+.Backdrop {
+    /* should cover the whole page */
+    width: 100%;
+    height: 100px;;
+    /* should stay at the same position even if you scroll */
+    position: fixed;
+    /* make it above other site contents */
+    z-index:100;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.5)
+
+}
