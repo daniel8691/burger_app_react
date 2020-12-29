@@ -4,6 +4,11 @@ import React, {Component} from 'react';
 import Aux from '../HOC/Aux1';
 import Burger from '../Components/Burger/Burger';
 import BuildControls from '../Components/Burger/BuildControls/BuildControls';
+// import modal
+import Modal from '../Components/UI/Modal/Modal'
+// import OrderSummary.js
+import OrderSummary from '../Components/Burger/OrderSummary/OrderSummary';
+
 
 // typically we use all capital letters for constants you want to use a global constants
 const INGREDIENT_PRICES = {
@@ -30,7 +35,8 @@ class BestBurger extends Component {
         // add a totla price property to the ingredient
         totalPrice: 4,
         // I will make this true if the ingrdient is one or more
-        purchasable:false 
+        purchasable:false ,
+        purchasing: false
     }
     // add new method to the burger builder
     updatePurchaseState (ingredients) {
@@ -123,6 +129,10 @@ class BestBurger extends Component {
 
         return(
             <Aux>
+                {/* this is to wrap the order summary */}
+                <Modal>
+                    <OrderSummary ingredients = {this.state.ingredients} />
+                </Modal>
                 {/* pass the list of ingredients into the Burger tag */}
                 <Burger ingredients={this.state.ingredients} />
                 {/* <div>Burger</div> */}
@@ -135,6 +145,7 @@ class BestBurger extends Component {
                     purchasable = {this.state.purchasable}
                     // pass in the price from the state
                     price={this.state.totalPrice} />
+                
 
             </Aux>
 
