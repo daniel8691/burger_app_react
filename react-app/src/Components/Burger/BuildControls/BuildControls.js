@@ -14,6 +14,8 @@ const controls = [
 const buildControls = (props) => (
     // give styping with div tags
     <div className = "BuildControls">
+        {/* use the toFixed() method to round to two decimal places */}
+        <p>Current Price: <strong>{props.price.toFixed(2)}</strong></p>
         {/* create a loop */}
         {controls.map(ctrl => (
             // console.log(ctrl.label);
@@ -24,6 +26,9 @@ const buildControls = (props) => (
             removed = {() => props.ingredientRemoved(ctrl.type)}
             disabled = {props.disabled[ctrl.type]}  />
         ))}
+        {/* create a checkout button */}
+        <button className = "OrderButton"
+        disabled={!props.purchasable}>ORDER NOW</button>
 
 
     </div>

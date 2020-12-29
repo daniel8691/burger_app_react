@@ -28,7 +28,33 @@ class BestBurger extends Component {
             meat: 0
         },
         // add a totla price property to the ingredient
-        totalPrice: 4
+        totalPrice: 4,
+        // I will make this true if the ingrdient is one or more
+        purchasable:false 
+    }
+    // add new method to the burger builder
+    updatePurchaseState (ingredients) {
+        // create a copy of this state ingredients
+        // const ingredients = {
+        //     ...this.state.ingredients
+        // };
+        // turn this ingredient object into an array of string entries
+        const sumIngredients = Object.keys(ingredients)
+                    .map(igKey => {
+                        console.log(igKey);
+                        // igKey is ie. salad, bacon and so on
+                        return ingredients[igKey]
+                        
+                    })
+                    // turn ingredients array into a single number (sum of all ingredients)
+                    .reduce((sum,el) => {
+                        return sum + el
+                    },0);
+        this.setState({
+            // this is either True or False
+            purchasable: sumIngredients > 0
+        });
+                    
     }
 
     // create a handler that allow users to add ingredients on click (on the "More" button)
@@ -48,7 +74,7 @@ class BestBurger extends Component {
             totalPrice:newPrice,
             ingredients: updatedIngredients
         });
-        
+        this.updatePurchaseState(updatedIngredients);
         // console.log(oldCount);
         console.log(type)
     }
@@ -73,6 +99,7 @@ class BestBurger extends Component {
             totalPrice: newPrice,
             ingredients: updatedIngredients
         })
+        this.updatePurchaseState(updatedIngredients);
 
     }
 
@@ -104,7 +131,10 @@ class BestBurger extends Component {
                     ingredientAdded = {this.addIngredientHandler}
                     ingredientRemoved = {this.removeIngredientHandler}
                     // disabled property
-                    disabled = {disabledInfo} />
+                    disabled = {disabledInfo}
+                    purchasable = {this.state.purchasable}
+                    // pass in the price from the state
+                    price={this.state.totalPrice} />
 
             </Aux>
 
