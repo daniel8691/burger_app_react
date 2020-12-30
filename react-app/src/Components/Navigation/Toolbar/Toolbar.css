@@ -1,0 +1,23 @@
+.Toolbar {
+    height:56px;
+    width: 100%;
+    /* make it always at the top */
+    position:fixed;
+    top: 0;
+    left: 0;
+    background-color: #703809;
+    display:flex;
+    justify-content: 'space-between';
+    align-items:center;
+    padding: 0 20px;
+    box-sizing:border-box;
+    /* this value has to be lower than the backdrop (at 100 */
+    z-index:90;
+
+}
+.Toolbar nav {
+    /* relative to the toolvar height. make it span the full height of the toolbar */
+    height:100%;
+}
+
+/* create sizings for mobile first */

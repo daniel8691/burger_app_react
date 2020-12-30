@@ -24,6 +24,8 @@ const ingredientSummary = Object.keys(props.ingredients)
                 {ingredientSummary}
 
             </ul>
+            {/* round 2 two decimal places */}
+            <p><strong>Total Price: {props.price.toFixed(2)}</strong></p>
             <p>Continue to Checkout</p>
             {/* for the Button tags, we need to set the two properties defined in Button.js ("clicked" and 'btnType') */}
             <Button btnType = "Danger" clicked={props.purchaseCancelled}>CANCEL</Button>

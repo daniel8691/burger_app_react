@@ -149,6 +149,7 @@ class BestBurger extends Component {
                     <OrderSummary ingredients = {this.state.ingredients}
                     purchaseCancelled={this.purchaseCancelHandler}
                     purchaseContinued={this.purchaseContinueHandler}
+                    price = {this.state.totalPrice}
                          />
                 </Modal>
                 {/* pass the list of ingredients into the Burger tag */}

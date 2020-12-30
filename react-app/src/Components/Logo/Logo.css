@@ -1,0 +1,17 @@
+.Logo {
+    background-color: white;
+    padding:8px;
+    /* make the div a height of 80% */
+    height:80%;
+    /* so the 80% height also includes the padding */
+    box-sizing: border-box;
+    /* round the edges */
+    border-radius: 5px;
+}
+
+
+/* style the image inside the div */
+.Logo img {
+    height: 100%;
+
+}
